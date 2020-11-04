@@ -67,8 +67,6 @@ public class Main {
         counter3.addProduct(fanta);
         counter3.addProduct(p2);
 
-
-
         SecurityGuard security1 = new SecurityGuard("Vasya");
         Merchandiser merch1 = new Merchandiser("Natasha");
         merch1.addCounter(counter1);
