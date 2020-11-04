@@ -1,4 +1,4 @@
-package com.groceryshop;
+package com.GroceryShop;
 
 public class Pistol {
     private String model;

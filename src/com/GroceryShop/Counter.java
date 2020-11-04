@@ -1,4 +1,4 @@
-package com.groceryshop;
+package com.GroceryShop;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,11 @@ public class Counter {
         return products;
     }
 
-    public void addProduct(Product product){
-        this.products.add(product);
+    public void addProduct(Product product) {
+        if (this.products.contains(product)) {
+            System.out.println("This product is already on the counter!");
+        } else {
+            this.products.add(product);
+        }
     }
 }

@@ -1,4 +1,4 @@
-package com.groceryshop;
+package com.GroceryShop;
 
 import java.util.ArrayList;
 
@@ -43,7 +43,7 @@ public class Shop {
         this.workers.add(worker);
     }
 
-    private static class Cashbox {
+    public static class Cashbox {
         float maxCash;
         private float current_balance = 0;
 

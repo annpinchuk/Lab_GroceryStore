@@ -1,4 +1,4 @@
-package com.groceryshop;
+package com.GroceryShop;
 
 public abstract class Worker {
     protected String name;

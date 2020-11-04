@@ -1,4 +1,4 @@
-package com.groceryshop;
+package com.GroceryShop;
 
 import java.util.ArrayList;
 
