@@ -26,4 +26,9 @@ public class Counter {
             this.products.add(product);
         }
     }
+
+    @Override
+    public String toString() {
+        return category.toString();
+    }
 }
