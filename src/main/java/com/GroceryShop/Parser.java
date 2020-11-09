@@ -1,7 +1,7 @@
 package com.GroceryShop;
 
 public class Parser {
-    Product parseProduct(String str) {
+    public Product parseProduct(String str) {
         String[] parts = str.split(" ");
 
         if (parts.length < 3) {
