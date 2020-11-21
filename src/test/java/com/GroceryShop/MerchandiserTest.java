@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MerchandiserTest {
     @Test
-    public void testCounters() {
+    public void AreCountersAddedToMerchandiser() {
         Counter counter1 = new Counter(CounterType.Box);
         Counter counter2 = new Counter(CounterType.Shelf);
         Counter counter3 = new Counter(CounterType.Fridge);

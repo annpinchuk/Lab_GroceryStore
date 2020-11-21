@@ -7,6 +7,14 @@ public class SecurityGuard extends Worker {
         super(name);
         this.gun = new Pistol("Glock 18", 9);
     }
+    public SecurityGuard(String name, Pistol gun) {
+        super(name);
+        this.gun = gun;
+    }
+
+    public String getPistolInfo(){
+        return "The gun: "  + gun.getModel() + ", " + gun.getCaliber() + "mm.";
+    }
 
     public Pistol getGun() {
         return gun;

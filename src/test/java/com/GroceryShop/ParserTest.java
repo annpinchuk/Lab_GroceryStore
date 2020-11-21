@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ParserTest {
     @Test
-    public void parseProduct() {
+    public void ProductInfoShouldBeCorrect() {
         Parser parser = new Parser();
 
         var resultProduct = parser.parseProduct("Yogurt Molokiya 40.5 1233123123");
@@ -17,16 +17,16 @@ public class ParserTest {
     }
 
     @Test (expected = NotParsableException.class)
-    public void parseProductWithException() {
+    public void FailToParseWithoutBarcode() {
         Parser parser = new Parser();
 
-        var resultProduct = parser.parseProduct("Yogurt Molokiya 40.5");
+        parser.parseProduct("Yogurt Molokiya 40.5");
     }
 
     @Test (expected = NotParsableException.class)
-    public void parseTwoArguments() {
+    public void FailToParseIfTwoArguments() {
         Parser parser = new Parser();
 
-        var resultProduct = parser.parseProduct("Yogurt 40.5");
+        parser.parseProduct("Yogurt 40.5");
     }
 }

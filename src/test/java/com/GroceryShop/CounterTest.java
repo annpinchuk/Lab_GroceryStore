@@ -2,16 +2,15 @@ package com.GroceryShop;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 
 public class CounterTest {
     @Test
-    public void addProduct() {
+    public void ProductsAreNotAddedTwiceToTheCounter() {
         GregorianCalendar date1 = new GregorianCalendar(2020, Calendar.SEPTEMBER, 30);
         Counter counter1 = new Counter(CounterType.Box);
         Fruits apples = new Fruits("Apple", 40.5, 4809745635L, 100);
@@ -31,7 +30,7 @@ public class CounterTest {
     }
 
     @Test
-    public void toStringTest() {
+    public void IsCounterDescriptionCorrect() {
         Counter counter1 = new Counter(CounterType.Box);
         Counter counter2 = new Counter(CounterType.Shelf);
         Counter counter3 = new Counter(CounterType.Fridge);
@@ -43,7 +42,23 @@ public class CounterTest {
     }
 
     @Test
-    public void listTest() {
+    public void IsCounterTypesDescriptionListCorrect() {
         assertEquals("Fridge (1 levels), Shelf (5 levels), Box (1 levels), ",CounterType.getList());
+    }
+
+    @Test
+    public void AreProductsAddedToList() {
+        ArrayList<Product> list = spy(new ArrayList<>());
+        Counter counter = new Counter(CounterType.Box, list);
+        Fruits apples = new Fruits("Apple", 40.5, 4809745635L, 100);
+        Fruits bananas = new Fruits("Banana", 25, 4806555478L, 300);
+
+        counter.addProduct(apples);
+        counter.addProduct(bananas);
+
+        verify(list).add(apples);
+        verify(list).add(bananas);
+
+        assertEquals(2, list.size());
     }
 }

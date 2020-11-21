@@ -2,11 +2,12 @@ package com.GroceryShop;
 
 import org.junit.Test;
 
+import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
 
 public class BeveragesTest {
     @Test
-    public void testConstructor() {
+    public void IsTheInfoAboutProductAddedCorrectly() {
         String coca_cola1 = "Coca Cola";
         int price = 15;
         long barcode = 4804561234L;

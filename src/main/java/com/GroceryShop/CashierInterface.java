@@ -3,7 +3,7 @@ package com.GroceryShop;
 public interface CashierInterface {
     int getId();
 
-    void sell(Product product);
+    String sell(Product product);
 
-    void sell(Product product, int count);
+    String sell(Product product, int count);
 }
