@@ -72,21 +72,28 @@ public class Main {
         merch1.addCounter(counter1);
         merch1.addCounter(counter2);
         Cashier cashier1 = new Cashier("Tamara");
+        Cashier cashier2 = new Cashier("Vlada", 2);
 
         shop.addWorker(security1);
         shop.addWorker(merch1);
         shop.addWorker(cashier1);
+        shop.addWorker(cashier2);
 
         showShop(shop);
 
         cashier1.sell(apples);
+        cashier1.sell(yogurt_activia, 5);
 
     }
 
     private static void showShop(Shop shop) {
         System.out.println("Grocery store name: " + shop.getName());
 
+        StringBuilder sb = new StringBuilder();
         for (Counter counter : shop.getCounters()) {
+            sb.append(counter);
+            sb.append(", ");
+
             System.out.println("- " + counter.getCategory() + " products:");
             Iterator<Product> iterator = counter.getProducts().iterator();
             while (iterator.hasNext()) {
@@ -94,6 +101,7 @@ public class Main {
                 product.display();
             }
         }
+        System.out.println("Shop counters: " + sb);
         System.out.println("Workers: ");
         for (Worker worker : shop.getWorkers()) {
             System.out.println("- " + worker.getName() + "");

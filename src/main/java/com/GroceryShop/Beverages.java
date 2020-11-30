@@ -1,7 +1,7 @@
 package com.GroceryShop;
 
 public class Beverages extends Product {
-    private int quantity;
+    protected int quantity;
 
     public Beverages(String name, double price, long barcode, int quantity) {
         super(name, price, barcode);

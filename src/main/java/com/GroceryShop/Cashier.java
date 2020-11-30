@@ -24,6 +24,6 @@ public class Cashier extends Worker implements CashierInterface{
 
     @Override
     public void sell(Product product, int count) {
-        System.out.println("Cashier name: " + name + " sold " + product.getName() + "x" + count);
+        System.out.println("Cashier name: " + name + " sold " + product.getName() + " x " + count);
     }
 }

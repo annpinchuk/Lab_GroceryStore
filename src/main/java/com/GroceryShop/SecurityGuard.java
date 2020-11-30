@@ -7,4 +7,8 @@ public class SecurityGuard extends Worker {
         super(name);
         this.gun = new Pistol("Glock 18", 9);
     }
+
+    public Pistol getGun() {
+        return gun;
+    }
 }

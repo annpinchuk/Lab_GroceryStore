@@ -8,4 +8,12 @@ public class Pistol {
         this.model = model;
         this.caliber = caliber;
     }
+
+    public String getModel() {
+        return model;
+    }
+
+    public int getCaliber() {
+        return caliber;
+    }
 }
