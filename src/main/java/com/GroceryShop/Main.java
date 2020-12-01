@@ -7,6 +7,7 @@ import java.util.Iterator;
 public class Main {
 
     public static void main(String[] args) {
+
         System.out.println("CounterTypes: " + CounterType.getList());
 
         Parser parser = new Parser();
@@ -81,8 +82,8 @@ public class Main {
 
         showShop(shop);
 
-        cashier1.sell(apples);
-        cashier1.sell(yogurt_activia, 5);
+        System.out.println(cashier1.sell(apples));
+        System.out.println(cashier1.sell(yogurt_activia, 5));
 
     }
 

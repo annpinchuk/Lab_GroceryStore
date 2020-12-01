@@ -4,11 +4,16 @@ import java.util.ArrayList;
 
 public class Counter {
     private CounterType category;
-    private ArrayList<Product> products;
+    protected ArrayList<Product> products;
 
     public Counter(CounterType category) {
         this.category = category;
         this.products = new ArrayList<>();
+    }
+
+    public Counter(CounterType category, ArrayList<Product> products) {
+        this.category = category;
+        this.products = products;
     }
 
     public CounterType getCategory() {
