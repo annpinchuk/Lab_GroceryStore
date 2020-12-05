@@ -1,8 +1,6 @@
 package com.GroceryShop;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
+import java.util.*;
 
 public class Main {
 
@@ -84,6 +82,23 @@ public class Main {
 
         System.out.println(cashier1.sell(apples));
         System.out.println(cashier1.sell(yogurt_activia, 5));
+
+        ProductRepository productRepository = new ProductRepository(shop);
+        System.out.println(productRepository.getProductSum(CounterType.Box));
+        Map<String, List<Product>> map = productRepository.groupbyPrice(CounterType.Shelf);
+
+        map.forEach((key, value) -> {
+            System.out.println(key + ": ");
+            for (Product product: value) {
+                product.display();
+            }
+        });
+
+        Product expensiveProduct = productRepository.getTheMostExpensiveProduct(CounterType.Shelf);
+        System.out.println("The most expensive product: ");
+        expensiveProduct.display();
+
+        System.out.println("Average sum of all products: " + productRepository.getAveragePrice());
 
     }
 

@@ -9,6 +9,10 @@ public abstract class Product {
         return name;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
     public Product(String name, double price, long barcode) {
         this.name = name;
         this.price = price;
