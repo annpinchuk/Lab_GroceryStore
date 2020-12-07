@@ -5,8 +5,10 @@ import org.junit.Test;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.function.Predicate;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ProductRepositoryTest {
     ProductRepository productRepository;
@@ -73,5 +75,29 @@ public class ProductRepositoryTest {
 
         assertEquals(result.get("expensive").size(), 1);
         assertEquals(result.get("cheap").size(), 1);
+    }
+
+    @Test
+    public void GetTheMostExpensiveProductShouldReturnRightName() {
+        var result = productRepository.getTheMostExpensiveProduct(CounterType.Shelf);
+
+        assertEquals(result.getName(), "Coca Cola");
+    }
+
+    @Test
+    public void GetAveragePriceShouldCalculateRightValue() {
+        var result = productRepository.getAveragePrice();
+
+        assertEquals(result, 22.5, 0.01);
+    }
+
+    @Test
+    public void CheckCounterTypeShouldReturnTrue() {
+        Predicate<Counter> check = ProductRepository.checkCounterType(CounterType.Shelf);
+        Counter counter = new Counter(CounterType.Shelf);
+
+        boolean result = check.test(counter);
+
+        assertTrue(result);
     }
 }

@@ -35,7 +35,7 @@ public class CounterTest {
         Counter counter2 = new Counter(CounterType.Shelf);
         Counter counter3 = new Counter(CounterType.Fridge);
 
-        assertEquals(counter1.getCategory().toString(), counter1.toString());
+        assertEquals(counter1.getType().toString(), counter1.toString());
         assertEquals("Box (1 levels)", counter1.toString());
         assertEquals("Shelf (5 levels)", counter2.toString());
         assertEquals("Fridge (1 levels)", counter3.toString());
