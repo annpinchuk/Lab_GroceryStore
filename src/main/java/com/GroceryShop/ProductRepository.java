@@ -3,6 +3,7 @@ package com.GroceryShop;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,15 +14,18 @@ public class ProductRepository {
         this.shop = shop;
     }
 
-    protected Stream<Product> getProductStream(CounterType counterType) {
+    protected Stream<Product> getProductStream(Predicate<Counter> predicate) {
         return shop.getCounters().stream()
-                .filter(e -> e.getCategory() == counterType)
-                .flatMap(e -> e.getProducts().stream());
+                .filter(predicate)
+                .flatMap(counter -> counter.getProducts().stream());
+    }
+
+    protected Stream<Product> getProductStream(CounterType counterType) {
+        return getProductStream(checkCounterType(counterType));
     }
 
     protected Stream<Product> getProductStream() {
-        return shop.getCounters().stream()
-                .flatMap(e -> e.getProducts().stream());
+        return getProductStream(counter -> true);
     }
 
     public double getProductSum(CounterType counterType) {
@@ -45,6 +49,10 @@ public class ProductRepository {
                 .mapToDouble(Product::getPrice)
                 .average()
                 .orElse(Double.NaN);
+    }
+
+    public static Predicate<Counter> checkCounterType(CounterType counterType) {
+        return counter -> counter.getType() == counterType;
     }
 
 }

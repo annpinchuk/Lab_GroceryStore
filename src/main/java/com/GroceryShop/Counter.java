@@ -3,21 +3,21 @@ package com.GroceryShop;
 import java.util.ArrayList;
 
 public class Counter {
-    private CounterType category;
+    private CounterType type;
     protected ArrayList<Product> products;
 
-    public Counter(CounterType category) {
-        this.category = category;
+    public Counter(CounterType type) {
+        this.type = type;
         this.products = new ArrayList<>();
     }
 
-    public Counter(CounterType category, ArrayList<Product> products) {
-        this.category = category;
+    public Counter(CounterType type, ArrayList<Product> products) {
+        this.type = type;
         this.products = products;
     }
 
-    public CounterType getCategory() {
-        return category;
+    public CounterType getType() {
+        return type;
     }
 
     public ArrayList<Product> getProducts() {
@@ -34,6 +34,6 @@ public class Counter {
 
     @Override
     public String toString() {
-        return category.toString();
+        return type.toString();
     }
 }

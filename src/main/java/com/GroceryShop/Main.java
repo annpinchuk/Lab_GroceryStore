@@ -110,7 +110,7 @@ public class Main {
             sb.append(counter);
             sb.append(", ");
 
-            System.out.println("- " + counter.getCategory() + " products:");
+            System.out.println("- " + counter.getType() + " products:");
             Iterator<Product> iterator = counter.getProducts().iterator();
             while (iterator.hasNext()) {
                 Product product = iterator.next();
@@ -123,7 +123,7 @@ public class Main {
             System.out.println("- " + worker.getName() + "");
             if (worker instanceof Merchandiser) {
                 for (Counter counter : ((Merchandiser) worker).getCounters()) {
-                    System.out.println("--- " + counter.getCategory());
+                    System.out.println("--- " + counter.getType());
                 }
             }
         }
