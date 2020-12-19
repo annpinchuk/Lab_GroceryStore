@@ -2,7 +2,6 @@ package com.GroceryShop;
 
 import org.junit.Test;
 
-import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
 
 public class BeveragesTest {
