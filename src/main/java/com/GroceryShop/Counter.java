@@ -1,10 +1,15 @@
 package com.GroceryShop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 
 public class Counter {
     private CounterType type;
     protected ArrayList<Product> products;
+
+    private static final Logger logger = LogManager.getLogger(Counter.class);
 
     public Counter(CounterType type) {
         this.type = type;
@@ -26,7 +31,7 @@ public class Counter {
 
     public void addProduct(Product product) {
         if (this.products.contains(product)) {
-            System.out.println("This product is already on the counter!");
+            logger.info("This product is already on the counter!");
         } else {
             this.products.add(product);
         }

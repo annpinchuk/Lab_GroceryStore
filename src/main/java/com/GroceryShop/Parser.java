@@ -1,6 +1,12 @@
 package com.GroceryShop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Parser {
+
+    private static final Logger logger = LogManager.getLogger(Parser.class);
+
     public Product parseProduct(String str) {
         String[] parts = str.split(" ");
 
@@ -27,7 +33,7 @@ public class Parser {
         return new Product(sb.toString(), price, barcode) {
             @Override
             public void display() {
-                System.out.println("Product: " + name + ", " + price + ", (" + barcode + ")");
+                logger.info("Product: " + name + ", " + price + ", (" + barcode + ")");
             }
         };
     }

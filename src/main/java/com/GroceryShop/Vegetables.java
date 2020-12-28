@@ -1,7 +1,12 @@
 package com.GroceryShop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Vegetables extends Product {
     private float weight;
+
+    private static final Logger logger = LogManager.getLogger(Vegetables.class);
 
     public Vegetables(String name, double price, long barcode, float weight) {
         super(name, price, barcode);
@@ -10,6 +15,6 @@ public class Vegetables extends Product {
 
     @Override
     public void display() {
-        System.out.println("Vegetable: " + name + " has weight " + weight + ", " + price + "/kg, (" + barcode + ")");
+        logger.info("Vegetable: " + name + " has weight " + weight + ", " + price + "/kg, (" + barcode + ")");
     }
 }

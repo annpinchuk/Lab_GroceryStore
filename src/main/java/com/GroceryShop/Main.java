@@ -1,12 +1,17 @@
 package com.GroceryShop;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class Main {
 
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
 
-        System.out.println("CounterTypes: " + CounterType.getList());
+        logger.info("CounterTypes: " + CounterType.getList());
 
         Parser parser = new Parser();
         GregorianCalendar date1 = new GregorianCalendar(2020, Calendar.SEPTEMBER, 30);
@@ -22,16 +27,16 @@ public class Main {
         shop.addCounter(counter4);
 
         if(counter3.equals(counter4)){
-            System.out.println("Counters are equal!");
+            logger.debug("Counters are equal!");
         }else{
-            System.out.println("Counters are not equal!");
+            logger.debug("Counters are not equal!");
         }
 
         Product p1;
         try {
             p1 = parser.parseProduct("Yogurt Molokiya 40.5 1233123123");
         } catch (NotParsableException e) {
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         } finally {
             p1 = new Dairy("Yogurt Molokiya", 40.5, 1233123123, date1, 1000);
         }
@@ -40,7 +45,7 @@ public class Main {
         try {
             p2 = parser.parseProduct("Sprite test 12 ");
         } catch (NotParsableException e) {
-            System.err.println(e.getMessage());
+            logger.error(e.getMessage());
         } finally {
             p2 = new Beverages("Sprite", 12, 34234234, 400);
         }
@@ -80,50 +85,50 @@ public class Main {
 
         showShop(shop);
 
-        System.out.println(cashier1.sell(apples));
-        System.out.println(cashier1.sell(yogurt_activia, 5));
+        logger.info(cashier1.sell(apples));
+        logger.info(cashier1.sell(yogurt_activia, 5));
 
         ProductRepository productRepository = new ProductRepository(shop);
-        System.out.println(productRepository.getProductSum(CounterType.Box));
+        logger.info(productRepository.getProductSum(CounterType.Box));
         Map<String, List<Product>> map = productRepository.groupbyPrice(CounterType.Shelf);
 
         map.forEach((key, value) -> {
-            System.out.println(key + ": ");
+            logger.info(key + ": ");
             for (Product product: value) {
                 product.display();
             }
         });
 
         Product expensiveProduct = productRepository.getTheMostExpensiveProduct(CounterType.Shelf);
-        System.out.println("The most expensive product: ");
+        logger.info("The most expensive product: ");
         expensiveProduct.display();
 
-        System.out.println("Average sum of all products: " + productRepository.getAveragePrice());
+        logger.info("Average sum of all products: " + productRepository.getAveragePrice());
 
     }
 
     private static void showShop(Shop shop) {
-        System.out.println("Grocery store name: " + shop.getName());
+        logger.info("Grocery store name: " + shop.getName());
 
         StringBuilder sb = new StringBuilder();
         for (Counter counter : shop.getCounters()) {
             sb.append(counter);
             sb.append(", ");
 
-            System.out.println("- " + counter.getType() + " products:");
+            logger.info("- " + counter.getType() + " products:");
             Iterator<Product> iterator = counter.getProducts().iterator();
             while (iterator.hasNext()) {
                 Product product = iterator.next();
                 product.display();
             }
         }
-        System.out.println("Shop counters: " + sb);
-        System.out.println("Workers: ");
+        logger.info("Shop counters: " + sb);
+        logger.info("Workers: ");
         for (Worker worker : shop.getWorkers()) {
-            System.out.println("- " + worker.getName() + "");
+            logger.info("- " + worker.getName() + "");
             if (worker instanceof Merchandiser) {
                 for (Counter counter : ((Merchandiser) worker).getCounters()) {
-                    System.out.println("--- " + counter.getType());
+                    logger.info("--- " + counter.getType());
                 }
             }
         }
